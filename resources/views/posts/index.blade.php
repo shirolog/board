@@ -28,7 +28,7 @@
     
     <div class="card-header">Board</div>
     @if(isset($search_result))
-        <h5 class="card-title">{{$search_result}}</h5>
+        <h5 class="card-title" style="padding: 10px;">{{$search_result}}</h5>
     @endif    
     <div class="card-body">
         @if($message = Session::get('success'))

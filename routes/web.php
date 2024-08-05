@@ -43,3 +43,10 @@ Route::get('comments', [CommentController::class, 'create'])
 ->name('comments.create')->middleware('auth');
 Route::post('comments/store', [CommentController::class, 'store'])
 ->name('comments.store')->middleware('auth');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -13,13 +13,15 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- bootstrap cdn -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    
+  
 
     <!-- font-awesome adn -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- Scripts -->
-    <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
         .text-muted{
             display: none;
@@ -70,7 +72,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a href="{{route('posts.create')}}" class="dropdown-item">投稿する</a>
+                                <a href="{{route('posts.create')}}" class="dropdown-item">投稿する</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -89,7 +91,7 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
+        <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">

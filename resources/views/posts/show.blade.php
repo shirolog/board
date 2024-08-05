@@ -16,7 +16,7 @@
                     <p class="card-title">カテゴリー: {{$post->category->category_name}}</p>
                     <p class="card-title">投稿者: {{$post->user->name}}</p>
                     <p class="card-text">{{$post->content}}</p>
-                    <a href="{{ url('/') }}?search={{ request()->input('search') }}&page={{ request()->input('page') }}"
+                    <a href="{{ url('/') }}?search={{request()->input('search')}}&page={{request()->input('page')}}"
                      class="btn btn-primary">戻る</a>
                     </div>
             </div>
@@ -34,7 +34,8 @@
                 @endforeach
 
                 @auth
-                    <a href="{{route('comments.create', ['post_id' => $post->id])}}" class="btn btn-primary mt-1">コメントする</a>
+                    <a href="{{route('comments.create', ['post_id' => $post->id])}}"
+                     class="btn btn-primary mt-1">コメントする</a>
                 @endauth
             </div>
     </div>
