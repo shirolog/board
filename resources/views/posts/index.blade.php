@@ -61,7 +61,7 @@
                      <p class="card-title">投稿者: <a href="{{route('users.show',  $post->user->id)}}">
                     {{$post->user->name}}</a></p>
                     <p class="card-text">{{$post->content}}</p>
-                    <a href="{{route('posts.show', ['post' => $post->id]) }}?page={{ request()->input('page')}}"
+                    <a href="{{route('posts.show', ['post' => $post->id]) }}"
                      class="btn btn-primary">詳細</a>
                 </div>
             </div>

@@ -23,7 +23,7 @@
 
             <div class="p-3">
                 <div class="card-title">コメント一覧</div>
-                @foreach($post->comments as $comment)
+                @foreach($comments as $comment)
                     <div class="card">
                         <div class="card-body">
                             <p class="card-text">{{$comment->comment}}</p>
@@ -35,8 +35,12 @@
 
                 @auth
                     <a href="{{route('comments.create', ['post_id' => $post->id])}}"
-                     class="btn btn-primary mt-1">コメントする</a>
+                     class="btn btn-primary mt-3">コメントする</a>
                 @endauth
-            </div>
+                
+                <div class="mt-3">
+                    {!! $comments->links('pagination::bootstrap-5') !!}
+                </div>             
+        </div>
     </div>
 @endsection
