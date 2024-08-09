@@ -15,6 +15,8 @@ class PostController extends Controller
     public function index()
     {   
         $category_id = request()->input('category_id');
+
+        $currentPage = request()->input('page', 1);
     
         if($category_id){
             
@@ -24,10 +26,10 @@ class PostController extends Controller
             ->paginate(3)
             ->withQueryString();// クエリパラメータを引き継ぐ
 
-            return view('posts.index', compact('posts', 'category_id'));
+            return view('posts.index', compact('posts', 'category_id', 'currentPage'));
         }else{
             $posts = Post::with('category', 'user')->paginate(3);
-            return view('posts.index', compact('posts'));
+            return view('posts.index', compact('posts', 'currentPage'));
         }
         
     }
@@ -64,9 +66,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {   
+        
         $post->load('category', 'user', 'comments');
         $comments = $post->comments()
-        ->paginate(5);
+        ->paginate(5)
+        ->withQueryString();
         return view('posts.show', compact('post', 'comments'));
     }
 
@@ -101,13 +105,15 @@ class PostController extends Controller
             'search' => 'required',
         ]);
 
+        $currentPage = request()->input('page', 1);
+
         $posts = Post::Where('title', 'like' ,"%{$request->search}%")
         ->orWhere('content', 'like' ,"%{$request->search}%")
         ->paginate(3)
         ->withQueryString();
         $search_result = $request->search. 'の検索結果'. $posts->total(). '件';
 
-        return view('posts.index', compact('posts', 'search_result'))
+        return view('posts.index', compact('posts', 'search_result', 'currentPage'))
         ->with('search', $request->search);
     }
 }
